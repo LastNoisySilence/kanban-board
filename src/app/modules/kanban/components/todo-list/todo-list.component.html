@@ -1,0 +1,22 @@
+<mat-card>
+  <mat-card-title>
+    {{ listTitle }}
+  </mat-card-title>
+</mat-card>
+<mat-card>
+  <mat-card-content
+    fxLayout="column"
+    fxLayoutGap="10px"
+    [id]="listTitle"
+    [dragula]="'todos'">
+    <ng-container
+      *ngFor="let todo of todos | kanbanSort">
+      <kanban-todo-item
+        [id]="todo?.id"
+        [todo]="todo"
+        (onEditTodo)="onEditTodo.emit($event)"
+        (onRemoveTodo)="onRemoveTodo.emit($event)">
+      </kanban-todo-item>
+    </ng-container>
+  </mat-card-content>
+</mat-card>

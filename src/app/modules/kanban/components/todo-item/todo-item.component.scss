@@ -1,0 +1,29 @@
+:host {
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  :active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+  }
+}
+
+.mat-card {
+  &-title {
+    font-size: 18px;
+    h3 {
+      margin-top: 0;
+    }
+  }
+  &.low {
+    background-color: rgba(17, 205, 134, 0.4);
+  }
+  &.normal {
+    background-color: rgba(246, 214, 0, 0.4);
+  }
+  &.hight {
+    background-color: rgba(247, 0, 68, 0.4);
+  }
+}

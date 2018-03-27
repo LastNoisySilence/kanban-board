@@ -1,0 +1,12 @@
+.mat-card {
+  &:first-child {
+    margin-bottom: 10px;
+  }
+  &:last-child {
+    overflow-y: auto;
+    height: calc(100vh - 152px);
+  }
+}
+.mat-card-content {
+  min-height: 40px;
+}

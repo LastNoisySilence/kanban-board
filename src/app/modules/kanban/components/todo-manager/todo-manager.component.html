@@ -1,0 +1,59 @@
+<form
+  [formGroup]="form"
+  fxLayout="column"
+  fxLayoutGap="10px">
+  <mat-form-field>
+    <input
+      matInput
+      [readonly]="isPreviewMode"
+      formControlName="title"
+      placeholder="Todo title">
+    <mat-error *ngIf="isControlInvalid('title', 'required')">
+      Title is required.
+    </mat-error>
+    <mat-error *ngIf="isControlInvalid('title', 'minlength')">
+      Title is to short.
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea
+      matInput
+      [readonly]="isPreviewMode"
+      formControlName="description"
+      placeholder="Todo description"
+      matTextareaAutosize
+      matAutosizeMinRows="2"
+      matAutosizeMaxRows="5">
+    </textarea>
+    <mat-error *ngIf="isControlInvalid('description', 'required')">
+      Description is required.
+    </mat-error>
+    <mat-error *ngIf="isControlInvalid('description', 'minlength')">
+      Description is to short.
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select
+      formControlName="priority"
+      placeholder="Todo priority">
+      <mat-option
+        *ngFor="let priority of priorities"
+        [style.background]="priority?.color"
+        value="{{ priority?.value }}">
+        {{ priority?.value }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="isControlInvalid('priority', 'required')">
+      Priority is required.
+    </mat-error>
+  </mat-form-field>
+  <button
+    *ngIf="!isPreviewMode"
+    type="submit"
+    mat-raised-button
+    (click)="submitTodo()"
+    [disabled]="form.invalid"
+    color="primary">
+    {{ submitButtonName }}
+  </button>
+</form>

@@ -1,0 +1,27 @@
+<mat-card
+  [class]="'mat-card ' + todo?.priority">
+  <mat-card-title>
+    <h3>{{ todo?.title }}</h3>
+  </mat-card-title>
+  <mat-card-subtitle>
+    {{ todo?.creationTime | date: 'MMM d, y, HH:mm' }}
+  </mat-card-subtitle>
+  <mat-card-content>
+    {{ todo?.description }}
+  </mat-card-content>
+  <mat-card-actions
+    fxLayoutAlign="center stretch">
+    <button
+      mat-raised-button
+      *ngIf="isDoItOrInProgress(todo)"
+      (click)="onEditTodo.emit(todo)">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button
+      mat-raised-button
+      *ngIf="isDoneOrAborted(todo)"
+      (click)="onRemoveTodo.emit(todo)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
