@@ -6,8 +6,11 @@
   "scripts": {
     "ng": "ng",
     "start": "./node_modules/.bin/concurrently --kill-others \"./node_modules/.bin/json-server -q db.json\" \"ng serve --proxy-config proxy.conf.json\"",
+    "start-win": "node_modules\\.bin\\concurrently --kill-others \"node_modules\\.bin\\json-server -q db.json\" \"ng serve --proxy-config proxy.conf.json\"",
     "prod": "ng build --prod && cd dist && ../node_modules/.bin/concurrently --kill-others \"../node_modules/.bin/json-server -q ../db.json\" \"../node_modules/.bin/http-server -P http://localhost:3000/todos\"",
-    "deployDist": "cd dist && ../node_modules/.bin/concurrently --kill-others \"../node_modules/.bin/json-server -q ../db.json\" \"../node_modules/.bin/http-server -P http://localhost:3000/todos\""
+    "prod-win": "ng build --prod && cd dist && node_modules\\.bin\\concurrently --kill-others \"\\node_modules\\.bin/json-server -q ../db.json\" \"node_modules\\.bin\\http-server -P http://localhost:3000/todos\"",
+    "deployDist": "cd dist && ../node_modules/.bin/concurrently --kill-others \"../node_modules/.bin/json-server -q ../db.json\" \"../node_modules/.bin/http-server -P http://localhost:3000/todos\"",
+    "deployDist-win": "cd dist && node_modules\\.bin\\concurrently --kill-others \"\\node_modules\\.bin/json-server -q ../db.json\" \"node_modules\\.bin\\http-server -P http://localhost:3000/todos\""
   },
   "private": true,
   "dependencies": {
